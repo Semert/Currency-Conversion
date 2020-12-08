@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { MdSwapVert } from "react-icons";
 
 export default function ConversionRows(props) {
   const {
@@ -18,17 +17,35 @@ export default function ConversionRows(props) {
         className="input"
         value={amount}
         onChange={onChangeAmount}
-        style={{ marginRight: 5 }}
+        style={{
+          padding: 5,
+          fontSize: 18,
+          width: 215,
+          height: 48,
+        }}
       />
 
       {isDisabled && (
-        <Button variant="secondary" style={{ width: 70, height: 35 }}>
+        <Button
+          style={{
+            width: 70,
+            height: 50,
+            color: "grey",
+            backgroundColor: "white",
+            border: "none",
+          }}
+        >
           {" "}
           TRY{" "}
         </Button>
       )}
       <select
-        style={{ display: isDisabled ? "none" : "", width: 70, height: 35 }}
+        style={{
+          display: isDisabled ? "none" : "",
+          width: 70,
+          height: 48,
+          borderRadius: ".3em",
+        }}
         value={selectedCurrency}
         onChange={onChangeCurrency}
       >

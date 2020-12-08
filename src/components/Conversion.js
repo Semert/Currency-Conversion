@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ConversionRows from "./ConversionRows";
 import { MdSwapVert } from "react-icons/md";
+import "./Conversion.css";
 
 const BASE_URL = "https://api.ratesapi.io/api/latest";
 
@@ -41,38 +42,40 @@ const Conversion = () => {
     }
   }, [fromCurrency, toCurrency]);
 
-  function handleFromAmountChange(e) {
+  const handleFromAmountChange = (e) => {
     setAmount(e.target.value);
     setAmountInFromCurrency(true);
-  }
+  };
 
-  function handleToAmountChange(e) {
+  const handleToAmountChange = (e) => {
     setAmount(e.target.value);
     setAmountInFromCurrency(false);
-  }
+  };
 
   return (
     <>
-      <h1>Convert</h1>
-      <ConversionRows
-        currencyOptions={currencyOptions}
-        selectedCurrency={fromCurrency}
-        onChangeCurrency={(e) => setFromCurrency(e.target.value)}
-        onChangeAmount={handleFromAmountChange}
-        amount={fromAmount}
-        isDisabled={false}
-      />
-      <div className="equals" style={{ fontSize: "40px" }}>
-        <MdSwapVert />
+      <div className="section">
+        <h2 className="title">Döviz Çevir</h2>
+        <ConversionRows
+          currencyOptions={currencyOptions}
+          selectedCurrency={fromCurrency}
+          onChangeCurrency={(e) => setFromCurrency(e.target.value)}
+          onChangeAmount={handleFromAmountChange}
+          amount={fromAmount}
+          isDisabled={false}
+        />
+        <div className="equals" style={{ fontSize: "40px" }}>
+          <MdSwapVert />
+        </div>
+        <ConversionRows
+          currencyOptions={currencyOptions}
+          selectedCurrency={toCurrency}
+          onChangeCurrency={(e) => setToCurrency(e.target.value)}
+          onChangeAmount={handleToAmountChange}
+          amount={toAmount.toFixed(4)}
+          isDisabled={true}
+        />
       </div>
-      <ConversionRows
-        currencyOptions={currencyOptions}
-        selectedCurrency={toCurrency}
-        onChangeCurrency={(e) => setToCurrency(e.target.value)}
-        onChangeAmount={handleToAmountChange}
-        amount={toAmount.toFixed(4)}
-        isDisabled={true}
-      />
     </>
   );
 };

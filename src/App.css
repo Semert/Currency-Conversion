@@ -4,19 +4,36 @@
 .button {
   width: 500px;
   height: 48px;
-  text-align: "center";
+  text-align: center;
   background-color: #2b3b48 !important;
-  color: "white";
-  font-weight: "bold";
+  border: solid 2px #4f6477 !important;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.94px;
+}
+.btnPiyasa {
+  width: 500px;
+  height: 48px;
+  text-align: center;
+  background-color: #ffffff !important;
+  color: #2b3b48 !important;
+  font-weight: bold;
+  border: solid 2px #4f6477 !important;
   letter-spacing: 0.94px;
 }
 
 .columns {
   border: "1px solid black" !important;
 }
-
+.column {
+  margin-right: 70px !important;
+}
 .header {
   margin-bottom: 15px;
+}
+.btn-div {
+  display: flex;
+  justify-content: center;
 }
 /* .column {
   border: "1px solid black";

@@ -13,17 +13,19 @@ const useApi = () => {
     { id: "NOK", name: "Norveç Kronu" },
   ]);
   const [currency, setCurrency] = useState();
+  const [currencySecond, setCurrencySecond] = useState();
   const [loading, setLoading] = useState(false);
 
   const fetchData = async (currencies) => {
     setLoading(true);
-    let sonuc = [{ id: "", amount: "" }];
-    for (let x = 0; x < currencies.length; x++) {
+    let result = [{ id: "", amount: "" }];
+    for (let x = 0; x < currencies.length / 2; x++) {
       const { data } = await axios.get(
         `${BASE_URL}?base=${currencies[x].id}&symbols=TRY`
       );
-      sonuc = [
-        ...sonuc,
+
+      result = [
+        ...result,
         {
           id: currencies[x].id,
           name: currencies[x].name,
@@ -32,14 +34,33 @@ const useApi = () => {
         },
       ];
     }
-    setCurrency(sonuc);
+    let resultSecond = [{ id: "", amount: "" }];
+
+    for (let x = 3; x < currencies.length; x++) {
+      const { data } = await axios.get(
+        `${BASE_URL}?base=${currencies[x].id}&symbols=TRY`
+      );
+
+      resultSecond = [
+        ...resultSecond,
+        {
+          id: currencies[x].id,
+          name: currencies[x].name,
+          amount: Object.values(data.rates)[0].toFixed(4),
+          date: data.date,
+        },
+      ];
+    }
+
+    setCurrency(result);
+    setCurrencySecond(resultSecond);
     setLoading(false);
   };
 
   useEffect(() => {
     fetchData(currencies);
   }, []);
-  return { currency, fetchData, loading };
+  return { currency, currencySecond, fetchData, loading };
 };
 
 export default useApi;
