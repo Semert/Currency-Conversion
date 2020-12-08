@@ -2,31 +2,75 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Card, Button } from "react-bootstrap/";
-import CurrencyRow from "./components/CurrencyRow";
+import { Row, Col, Button } from "react-bootstrap/";
 import Conversion from "./components/Conversion";
 import Deneme from "./components/Deneme";
 
+const BASE_URL = "https://api.ratesapi.io/api/latest";
+
 function App() {
   const [currency, setCurrency] = useState([{ id: "", amount: "" }]);
-  const [base, setBase] = useState();
   const [date, setDate] = useState();
-  console.log("curency", currency);
+  const [currencies, setCurrencies] = useState([
+    { id: "GBP", name: "İngiliz Sterlini" },
+    { id: "USD", name: "Amerikan Doları" },
+    { id: "EUR", name: "Avrupa Para Birimi" },
+    { id: "JPY", name: "Japon Yeni" },
+    { id: "DKK", name: "Danimarka Kronu" },
+    { id: "NOK", name: "Norveç Kronu" },
+  ]);
+  const [datas, setData] = useState([{ id: "", amount: "" }]);
+  console.log("son", datas);
+
+  const fetchData = async (currencies) => {
+    let sonuc = [{ id: "", amount: "" }];
+    let date;
+    for (let x = 0; x < currencies.length; x++) {
+      console.log("denee", currencies[x]);
+      const { data } = await axios.get(
+        `${BASE_URL}?base=${currencies[x].id}&symbols=TRY`
+      );
+      sonuc = [
+        ...sonuc,
+        {
+          id: currencies[x].id,
+          name: currencies[x].name,
+          amout: Object.values(data.rates)[0],
+        },
+      ];
+      console.log("daaata", Object.values(data.rates));
+      date = data.date;
+    }
+    console.log("sonuc", sonuc);
+    setData(sonuc);
+    setDate(date);
+  };
 
   useEffect(() => {
-    const fetctData = async () => {
-      const { data } = await axios.get("https://api.ratesapi.io/api/latest");
-      const { GBP, USD, TRY, JPY, DKK, NOK } = data.rates;
-      console.log(data.rates);
-      // { gbp: [GBP, "GBP"], usd: [USD, "USD"], try: TRY, jpy: JPY, dkk: DKK, nok: NOK },
-
-      setCurrency([...currency, { id: "GBP", amount: GBP }]);
-      setDate(data.date);
-      setBase(data.base);
-    };
-
-    fetctData();
+    fetchData(currencies);
   }, []);
+
+  // useEffect(() => {
+  //   const fetctData = async () => {
+  //     const { data } = await axios.get("https://api.ratesapi.io/api/latest");
+  //     const { GBP, USD, TRY, JPY, DKK, NOK } = data.rates;
+  //     console.log(Object.keys(data.rates));
+
+  //     setCurrency([
+  //       ...currency,
+  //       { id: "GBP", amount: GBP },
+  //       { id: "USD", amount: USD },
+  //       { id: "JPY", amount: JPY },
+  //       { id: "DKK", amount: DKK },
+  //       { id: "NOK", amount: NOK },
+  //     ]);
+  //     setCurrency([data.rates]);
+  //     setDate(data.date);
+  //     setBase(data.base);
+  //   };
+
+  //   fetctData();
+  // }, []);
   return (
     <div className="pt-5 pr-5 pl-5">
       <Row>
