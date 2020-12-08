@@ -9,7 +9,6 @@ import Deneme from "./components/Deneme";
 const BASE_URL = "https://api.ratesapi.io/api/latest";
 
 function App() {
-  const [currency, setCurrency] = useState([{ id: "", amount: "" }]);
   const [date, setDate] = useState();
   const [currencies, setCurrencies] = useState([
     { id: "GBP", name: "İngiliz Sterlini" },
@@ -26,7 +25,6 @@ function App() {
     let sonuc = [{ id: "", amount: "" }];
     let date;
     for (let x = 0; x < currencies.length; x++) {
-      console.log("denee", currencies[x]);
       const { data } = await axios.get(
         `${BASE_URL}?base=${currencies[x].id}&symbols=TRY`
       );
@@ -38,10 +36,8 @@ function App() {
           amout: Object.values(data.rates)[0],
         },
       ];
-      console.log("daaata", Object.values(data.rates));
       date = data.date;
     }
-    console.log("sonuc", sonuc);
     setData(sonuc);
     setDate(date);
   };
@@ -79,8 +75,6 @@ function App() {
             // <CurrencyRow key={index} name={cur} amount={cur[1]} />
             console.log(cur)
           )} */}
-
-          {currency?.map((cur) => console.log("sa", cur.GBP))}
 
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button className="button">Detaylı Bilgi</Button>
