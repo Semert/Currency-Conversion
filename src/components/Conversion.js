@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ConversionRows from "./ConversionRows";
+import { MdSwapVert } from "react-icons/md";
 
 const BASE_URL = "https://api.ratesapi.io/api/latest";
 
@@ -61,13 +62,15 @@ const Conversion = () => {
         amount={fromAmount}
         isDisabled={false}
       />
-      <div className="equals">=</div>
+      <div className="equals" style={{ fontSize: "40px" }}>
+        <MdSwapVert />
+      </div>
       <ConversionRows
         currencyOptions={currencyOptions}
         selectedCurrency={toCurrency}
         onChangeCurrency={(e) => setToCurrency(e.target.value)}
         onChangeAmount={handleToAmountChange}
-        amount={toAmount}
+        amount={toAmount.toFixed(4)}
         isDisabled={true}
       />
     </>
