@@ -1,46 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "react-bootstrap/";
 import usa from "../usa.png";
+import "./CurrencyRow.css";
 
-const CurrencyRow = () => {
+const CurrencyRow = ({ name, amount }) => {
+  console.log("aaaaaaaa", name, amount);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        borderBottom: "1px solid grey",
-        paddingBottom: "20px",
-        paddingTop: "20px",
-        marginBottom: "20px",
-      }}
-    >
+    <div className="main">
       <div style={{ display: "flex" }}>
-        <img
-          src={usa}
-          style={{
-            width: "20%",
-            height: "20%",
-            objectFit: "contain",
-            marginRight: 15,
-          }}
-        />{" "}
+        <img className="image" src={usa} />{" "}
         <div>
           <div>
-            {" "}
-            <b> USD</b>{" "}
+            <b> {name}</b>
           </div>
           <div>Amerika Doları</div>
         </div>
       </div>
 
       <div>
-        {" "}
         <div style={{ textAlign: "end", color: "grey", marginRight: 3 }}>
-          ALIŞ{" "}
+          ALIŞ
         </div>
-        <div style={{ fontSize: 16, marginRight: 3 }}>6.3848</div>
+        <div style={{ fontSize: 16, marginRight: 3 }}>{amount}</div>
       </div>
 
       <div>

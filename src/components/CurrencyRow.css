@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 20%;
+  height: 20%;
+  object-fit: contain;
+  margin-right: 15px;
+}
