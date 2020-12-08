@@ -47,35 +47,10 @@ function App() {
     fetchData(currencies);
   }, []);
 
-  // useEffect(() => {
-  //   const fetctData = async () => {
-  //     const { data } = await axios.get("https://api.ratesapi.io/api/latest");
-  //     const { GBP, USD, TRY, JPY, DKK, NOK } = data.rates;
-  //     console.log(Object.keys(data.rates));
-
-  //     setCurrency([
-  //       ...currency,
-  //       { id: "GBP", amount: GBP },
-  //       { id: "USD", amount: USD },
-  //       { id: "JPY", amount: JPY },
-  //       { id: "DKK", amount: DKK },
-  //       { id: "NOK", amount: NOK },
-  //     ]);
-  //     setCurrency([data.rates]);
-  //     setDate(data.date);
-  //     setBase(data.base);
-  //   };
-
-  //   fetctData();
-  // }, []);
   return (
     <div className="pt-5 pr-5 pl-5">
       <Row>
         <Col lg className="m-2 column">
-          {/* {currency?.map((cur, index) =>
-            // <CurrencyRow key={index} name={cur} amount={cur[1]} />
-            console.log(cur)
-          )} */}
           {currency
             ?.filter((cur) => cur.id != "")
             .map((cur) => (
