@@ -1,15 +1,14 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-export default function ConversionRows(props) {
-  const {
-    currencyOptions,
-    selectedCurrency,
-    onChangeCurrency,
-    onChangeAmount,
-    amount,
-    isDisabled,
-  } = props;
+export default function ConversionRows({
+  currencyOptions,
+  selectedCurrency,
+  onChangeCurrency,
+  onChangeAmount,
+  amount,
+  isDisabled,
+}) {
   return (
     <div>
       <input
