@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import { Card } from "react-bootstrap/";
-import usa from "../usa.png";
 import "./CurrencyRow.css";
 
-const CurrencyRow = ({ name, amount }) => {
-  console.log("aaaaaaaa", name, amount);
+const CurrencyRow = ({ id, name, amount, date }) => {
   return (
     <div className="main">
       <div style={{ display: "flex" }}>
-        <img className="image" src={usa} />{" "}
+        <img className="image" src={`/images/${id.toLowerCase()}.png`} />{" "}
         <div>
           <div>
-            <b> {name}</b>
+            <b> {id}</b>
           </div>
-          <div>Amerika Doları</div>
+          <div>{name}</div>
         </div>
       </div>
 
@@ -26,8 +22,8 @@ const CurrencyRow = ({ name, amount }) => {
 
       <div>
         {" "}
-        <div style={{ textAlign: "end", color: "grey" }}> SATIŞ</div>
-        <div style={{ fontSize: 16 }}>6.3848</div>
+        <div style={{ textAlign: "end", color: "grey" }}> TARİH</div>
+        <div style={{ fontSize: 16 }}>{date}</div>
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ import Deneme from "./components/Deneme";
 const BASE_URL = "https://api.ratesapi.io/api/latest";
 
 function App() {
-  const [date, setDate] = useState();
   const [currencies, setCurrencies] = useState([
     { id: "GBP", name: "İngiliz Sterlini" },
     { id: "USD", name: "Amerikan Doları" },
@@ -19,12 +18,13 @@ function App() {
     { id: "DKK", name: "Danimarka Kronu" },
     { id: "NOK", name: "Norveç Kronu" },
   ]);
+  const [loading, setLoading] = useState(false);
   const [currency, setCurrency] = useState([{ id: "", amount: "" }]);
   console.log("son", currency);
 
   const fetchData = async (currencies) => {
+    setLoading(true);
     let sonuc = [{ id: "", amount: "" }];
-    let date;
     for (let x = 0; x < currencies.length; x++) {
       const { data } = await axios.get(
         `${BASE_URL}?base=${currencies[x].id}&symbols=TRY`
@@ -35,12 +35,12 @@ function App() {
           id: currencies[x].id,
           name: currencies[x].name,
           amount: Object.values(data.rates)[0].toFixed(4),
+          date: data.date,
         },
       ];
-      date = data.date;
     }
     setCurrency(sonuc);
-    setDate(date);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -49,33 +49,37 @@ function App() {
 
   return (
     <div className="pt-5 pr-5 pl-5">
-      <Row>
-        <Col lg className="m-2 column">
-          {currency
-            ?.filter((cur) => cur.id != "")
-            .map((cur) => (
-              <CurrencyRow
-                key={cur.id}
-                name={cur.name}
-                amount={cur.amount}
-                id={cur.id}
-              />
-            ))}
+      {loading ? (
+        "loading"
+      ) : (
+        <Row>
+          {" "}
+          <Col lg className="m-2 column">
+            {currency
+              ?.filter((cur) => cur.id != "")
+              .map((cur) => (
+                <CurrencyRow
+                  key={cur.id}
+                  name={cur.name}
+                  amount={cur.amount}
+                  id={cur.id}
+                  date={cur.date}
+                />
+              ))}
 
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <Button className="button">Detaylı Bilgi</Button>
-          </div>
-        </Col>
-
-        <Col lg className="m-2">
-          2 of 3
-        </Col>
-
-        <Col lg className="m-2">
-          <Conversion />
-          <Deneme />
-        </Col>
-      </Row>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Button className="button">Detaylı Bilgi</Button>
+            </div>
+          </Col>
+          <Col lg className="m-2">
+            2 of 3
+          </Col>
+          <Col lg className="m-2">
+            {/* <Conversion />
+            <Deneme /> */}
+          </Col>
+        </Row>
+      )}
     </div>
   );
 }
