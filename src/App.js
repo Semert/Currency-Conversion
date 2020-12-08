@@ -4,6 +4,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Button } from "react-bootstrap/";
 import Conversion from "./components/Conversion";
+import CurrencyRow from "./components/CurrencyRow";
 import Deneme from "./components/Deneme";
 
 const BASE_URL = "https://api.ratesapi.io/api/latest";
@@ -18,8 +19,8 @@ function App() {
     { id: "DKK", name: "Danimarka Kronu" },
     { id: "NOK", name: "Norveç Kronu" },
   ]);
-  const [datas, setData] = useState([{ id: "", amount: "" }]);
-  console.log("son", datas);
+  const [currency, setCurrency] = useState([{ id: "", amount: "" }]);
+  console.log("son", currency);
 
   const fetchData = async (currencies) => {
     let sonuc = [{ id: "", amount: "" }];
@@ -33,12 +34,12 @@ function App() {
         {
           id: currencies[x].id,
           name: currencies[x].name,
-          amout: Object.values(data.rates)[0],
+          amount: Object.values(data.rates)[0].toFixed(4),
         },
       ];
       date = data.date;
     }
-    setData(sonuc);
+    setCurrency(sonuc);
     setDate(date);
   };
 
@@ -75,6 +76,16 @@ function App() {
             // <CurrencyRow key={index} name={cur} amount={cur[1]} />
             console.log(cur)
           )} */}
+          {currency
+            ?.filter((cur) => cur.id != "")
+            .map((cur) => (
+              <CurrencyRow
+                key={cur.id}
+                name={cur.name}
+                amount={cur.amount}
+                id={cur.id}
+              />
+            ))}
 
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button className="button">Detaylı Bilgi</Button>
