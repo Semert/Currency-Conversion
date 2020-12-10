@@ -28,10 +28,11 @@ export default function ConversionRows({
         <Button
           style={{
             width: 70,
-            height: 50,
+            height: 48,
             color: "grey",
             backgroundColor: "white",
             border: "none",
+            marginTop: -3,
           }}
         >
           {" "}
