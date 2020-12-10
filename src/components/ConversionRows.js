@@ -28,15 +28,17 @@ export default function ConversionRows({
         <Button
           style={{
             width: 70,
-            height: 48,
+            height: 46.5,
             color: "grey",
             backgroundColor: "white",
             border: "none",
-            marginTop: -3,
+            marginTop: -4,
+            marginLeft: -3,
+            fontSize: 20,
           }}
         >
           {" "}
-          TRY{" "}
+          TL{" "}
         </Button>
       )}
       <select
@@ -44,7 +46,8 @@ export default function ConversionRows({
           display: isDisabled ? "none" : "",
           width: 70,
           height: 48,
-          borderRadius: ".3em",
+          marginLeft: -3,
+          border: "1px solid #E0E0E0",
         }}
         value={selectedCurrency}
         onChange={onChangeCurrency}

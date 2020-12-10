@@ -5,11 +5,11 @@ const BASE_URL = "https://api.ratesapi.io/api/latest";
 
 const useApi = () => {
   const [currencies] = useState([
-    { id: "GBP", name: "İngiliz Sterlini" },
     { id: "USD", name: "Amerikan Doları" },
-    { id: "EUR", name: "Avrupa Para Birimi" },
     { id: "JPY", name: "Japon Yeni" },
     { id: "DKK", name: "Danimarka Kronu" },
+    { id: "EUR", name: "Avrupa Para Birimi" },
+    { id: "GBP", name: "İngiliz Sterlini" },
     { id: "NOK", name: "Norveç Kronu" },
   ]);
   const [currency, setCurrency] = useState();
