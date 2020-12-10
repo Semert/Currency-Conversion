@@ -4,7 +4,11 @@ const CurrencyRow = ({ id, name, amount, date }) => {
   return (
     <div className="main">
       <div className="context">
-        <img className="image" src={`/images/${id.toLowerCase()}.png`} />{" "}
+        <img
+          className="image"
+          alt={id.toLowerCase()}
+          src={`/images/${id.toLowerCase()}.png`}
+        />{" "}
         <div>
           <div>
             <b> {id}</b>

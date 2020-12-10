@@ -4,7 +4,7 @@ import axios from "axios";
 const BASE_URL = "https://api.ratesapi.io/api/latest";
 
 const useApi = () => {
-  const [currencies, setCurrencies] = useState([
+  const [currencies] = useState([
     { id: "GBP", name: "İngiliz Sterlini" },
     { id: "USD", name: "Amerikan Doları" },
     { id: "EUR", name: "Avrupa Para Birimi" },
@@ -59,7 +59,7 @@ const useApi = () => {
 
   useEffect(() => {
     fetchData(currencies);
-  }, []);
+  }, [currencies]);
   return { currency, currencySecond, fetchData, loading };
 };
 
