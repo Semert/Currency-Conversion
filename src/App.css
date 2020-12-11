@@ -1,6 +1,8 @@
 * {
   font-family: "Roboto";
+  overflow: hidden;
 }
+
 .button {
   width: 500px;
   height: 48px;
@@ -42,7 +44,7 @@
 
 @media only screen and (max-width: 600px) {
   .contain {
-    padding-left: 1%;
+    padding-left: 0%;
   }
   .btnPiyasa {
     width: 330px;
