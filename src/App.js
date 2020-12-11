@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Button } from "react-bootstrap/";
+import { Row, Col, Button, Spinner, Container } from "react-bootstrap/";
 import Conversion from "./components/Conversion";
 import CurrencyRow from "./components/CurrencyRow";
 import useApi from "./useApi";
@@ -14,7 +14,11 @@ function App() {
         <b className="header"> Piyasalar </b>
       </h2>
       {loading ? (
-        "loading"
+        <Container fluid>
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </Container>
       ) : (
         <Row>
           {" "}
