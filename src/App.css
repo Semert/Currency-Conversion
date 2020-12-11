@@ -1,6 +1,6 @@
 * {
   font-family: "Roboto";
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .button {
