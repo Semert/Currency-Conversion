@@ -29,14 +29,17 @@
   .detail-alıs {
     font-size: 14px;
   }
+  .detail {
+    font-size: 15px;
+  }
   .detail-tarih {
     font-size: 14px;
   }
   .id {
-    font-size: 12px;
+    font-size: 15px;
   }
   .name {
-    font-size: 12px;
+    font-size: 14px;
   }
   .context {
     max-width: 150px;
