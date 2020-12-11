@@ -9,7 +9,7 @@ function App() {
   const { loading, currency, currencySecond } = useApi();
 
   return (
-    <div className="pt-5 pr-5 pl-5">
+    <div className="contain">
       <h2 className="m-4">
         <b className="header"> Piyasalar </b>
       </h2>

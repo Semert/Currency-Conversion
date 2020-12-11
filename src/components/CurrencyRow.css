@@ -24,3 +24,21 @@
   display: flex;
   max-width: 200px;
 }
+
+@media only screen and (max-width: 600px) {
+  .detail-alıs {
+    font-size: 14px;
+  }
+  .detail-tarih {
+    font-size: 14px;
+  }
+  .id {
+    font-size: 12px;
+  }
+  .name {
+    font-size: 12px;
+  }
+  .context {
+    max-width: 150px;
+  }
+}

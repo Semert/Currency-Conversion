@@ -17,3 +17,48 @@
 .title {
   margin-bottom: 70px;
 }
+
+.input {
+  padding: 5px;
+  font-size: 18px;
+  width: 215px;
+  height: 60px;
+}
+
+.rowbutton {
+  width: 70px;
+  height: 57.5px;
+  color: grey;
+  background-color: white;
+  border: none;
+  margin-top: -3px;
+  margin-left: -3px;
+  font-size: 20px;
+}
+
+.select {
+  width: 70px;
+  height: 58.7px;
+  margin-left: -3px;
+  border: 1px solid #e0e0e0;
+}
+
+@media only screen and (max-width: 600px) {
+  .section {
+    width: 300px;
+    height: 330px;
+    padding: 25px;
+  }
+  .input {
+    width: 130px;
+    height: 49px;
+  }
+  .rowbutton {
+    height: 48px;
+    margin-top: -4px;
+  }
+  .select {
+    height: 48.5px;
+    padding-bottom: -5px;
+  }
+}

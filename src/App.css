@@ -35,6 +35,22 @@
   display: flex;
   justify-content: center;
 }
+.contain {
+  padding-top: 3%;
+  padding-left: 3%;
+}
+
+@media only screen and (max-width: 600px) {
+  .contain {
+    padding-left: 1%;
+  }
+  .btnPiyasa {
+    width: 330px;
+  }
+  .button {
+    width: 330px;
+  }
+}
 /* .column {
   border: "1px solid black";
   display: "flex";

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import "./Conversion.css";
 
 export default function ConversionRows({
   currencyOptions,
@@ -10,44 +11,19 @@ export default function ConversionRows({
   isDisabled,
 }) {
   return (
-    <div>
+    <div className="conversion">
       <input
         type="number"
         className="input"
         value={amount}
         onChange={onChangeAmount}
-        style={{
-          padding: 5,
-          fontSize: 18,
-          width: 215,
-          height: 48,
-        }}
       />
 
-      {isDisabled && (
-        <Button
-          style={{
-            width: 70,
-            height: 46.5,
-            color: "grey",
-            backgroundColor: "white",
-            border: "none",
-            marginTop: -4,
-            marginLeft: -3,
-            fontSize: 20,
-          }}
-        >
-          {" "}
-          TL{" "}
-        </Button>
-      )}
+      {isDisabled && <Button className="rowbutton"> TL </Button>}
       <select
+        className="select"
         style={{
           display: isDisabled ? "none" : "",
-          width: 70,
-          height: 48,
-          marginLeft: -3,
-          border: "1px solid #E0E0E0",
         }}
         value={selectedCurrency}
         onChange={onChangeCurrency}

@@ -11,21 +11,21 @@ const CurrencyRow = ({ id, name, amount, date }) => {
         />{" "}
         <div>
           <div>
-            <b> {id}</b>
+            <b className="id"> {id}</b>
           </div>
-          <p>{name}</p>
+          <p className="name">{name}</p>
         </div>
       </div>
 
       <div>
         <div className="detail">ALIŞ</div>
-        <div style={{ fontSize: 21 }}>{amount}</div>
+        <div className="detail-alıs">{amount}</div>
       </div>
 
       <div>
         {" "}
         <div className="detail"> TARİH</div>
-        <div style={{ fontSize: 18 }}>{date}</div>
+        <div className="detail-tarih">{date}</div>
       </div>
     </div>
   );
