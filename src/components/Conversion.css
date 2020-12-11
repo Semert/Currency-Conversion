@@ -54,11 +54,10 @@
     height: 49px;
   }
   .rowbutton {
-    height: 48px;
+    height: 47px;
     margin-top: -4px;
   }
   .select {
-    height: 48.5px;
-    padding-bottom: -5px;
+    height: 48px;
   }
 }
